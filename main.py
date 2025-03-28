@@ -9,8 +9,8 @@ import urllib.parse as urlparse
 # Bot token
 bot = telebot.TeleBot("7512402960:AAFTSAXRATbbcgIL5iE8Ug3e0G6_B0a3AcU")
 
-# Database setup (Postgres)
-DATABASE_URL = os.getenv('DATABASE_URL')
+# Database setup for PostgreSQL (Koyeb)
+DATABASE_URL = os.environ.get('DATABASE_URL')
 url = urlparse.urlparse(DATABASE_URL)
 conn = psycopg2.connect(
     dbname=url.path[1:],
@@ -21,7 +21,7 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS users 
-                  (chat_id TEXT_PRIMARY_KEY, logo_path TEXT, text_logo TEXT, position TEXT, channel_id TEXT, google_download INTEGER)''')
+                  (chat_id TEXT PRIMARY KEY, logo_path TEXT, text_logo TEXT, position TEXT, channel_id TEXT, google_download INTEGER)''')
 conn.commit()
 
 # Default channel set karna
@@ -60,7 +60,7 @@ def download_image_from_google(query):
 
 # Text ko image mein convert karne ka function
 def create_text_logo(text):
-    img = Image.new('RGBA', (300, 200), (0, 0, 0, 0))  # Size 300x200
+    img = Image.new('RGBA', (300, 200), (0, 0, 0,  0))  # Size 300x200
     draw = ImageDraw.Draw(img)
     try:
         font = ImageFont.truetype("arial.ttf", 30)  # Font size adjust kiya
