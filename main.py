@@ -21,7 +21,7 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS users 
-                  (chat_id TEXT PRIMARY_KEY, logo_path TEXT, text_logo TEXT, position TEXT, channel_id TEXT, google_download INTEGER)''')
+                  (chat_id TEXT_PRIMARY_KEY, logo_path TEXT, text_logo TEXT, position TEXT, channel_id TEXT, google_download INTEGER)''')
 conn.commit()
 
 # Default channel set karna
