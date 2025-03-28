@@ -21,12 +21,12 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS users 
-                  (chat_id TEXT PRIMARY KEY, logo_path TEXT, text_logo TEXT, position TEXT, channel_id TEXT, google_download INTEGER)''')
+                  (chat_id TEXT PRIMARY_KEY, logo_path TEXT, text_logo TEXT, position TEXT, channel_id TEXT, google_download INTEGER)''')
 conn.commit()
 
 # Default channel set karna
-DEFAULT_CHANNEL = "https://t.me/Series_Toon_0"
-DEFAULT_CHANNEL_ID = "-1002038845090"
+#DEFAULT_CHANNEL = "https://t.me/StreemCode1"
+#DEFAULT_CHANNEL_ID = ""
 
 # Position options
 POSITIONS = {
