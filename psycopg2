@@ -1,0 +1,26 @@
+import psycopg2
+
+# Database connection parameters
+conn = psycopg2.connect(
+    dbname="your_db",
+    user="your_user",
+    password="your_password",
+    host="your_host",
+    port="your_port"
+)
+
+# Create a cursor object
+cursor = conn.cursor()
+
+# Execute the corrected CREATE TABLE statement
+cursor.execute('''CREATE TABLE IF NOT EXISTS users 
+                  (chat_id TEXT PRIMARY KEY, logo_path TEXT)''')
+
+# Commit the transaction
+conn.commit()
+
+# Close the cursor and connection
+cursor.close()
+conn.close()
+
+print("Table created successfully!")
